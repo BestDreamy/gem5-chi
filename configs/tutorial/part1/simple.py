@@ -54,7 +54,7 @@ system.clk_domain.voltage_domain = VoltageDomain()
 
 # Set up the system
 system.mem_mode = "timing"  # Use timing accesses
-system.mem_ranges = [AddrRange("512MiB")]  # Create an address range
+system.mem_ranges = [AddrRange("512MB")]  # Create an address range
 
 # Create a simple CPU
 # You can use ISA-specific CPU models for different workloads:
@@ -67,16 +67,23 @@ system.membus = SystemXBar()
 # Hook the CPU ports up to the membus
 system.cpu.icache_port = system.membus.cpu_side_ports
 system.cpu.dcache_port = system.membus.cpu_side_ports
-
 # create the interrupt controller for the CPU and connect to the membus
+
 system.cpu.createInterruptController()
 
+##########################################################################
+##########################################################################
+##########################################################################
+# Just for x86
 # For X86 only we make sure the interrupts care connect to memory.
 # Note: these are directly connected to the memory bus and are not cached.
 # For other ISA you should remove the following three lines.
 system.cpu.interrupts[0].pio = system.membus.mem_side_ports
 system.cpu.interrupts[0].int_requestor = system.membus.cpu_side_ports
 system.cpu.interrupts[0].int_responder = system.membus.mem_side_ports
+##########################################################################
+##########################################################################
+##########################################################################
 
 # Create a DDR3 memory controller and connect it to the membus
 system.mem_ctrl = MemCtrl()
@@ -92,8 +99,8 @@ system.system_port = system.membus.cpu_side_ports
 # can be found in "tests/test-progs/hello".
 thispath = os.path.dirname(os.path.realpath(__file__))
 binary = os.path.join(
-    thispath,
-    "../../../",
+    # thispath,
+    # "../../../",
     "tests/test-progs/hello/bin/x86/linux/hello",
 )
 
