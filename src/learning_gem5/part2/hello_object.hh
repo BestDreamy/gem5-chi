@@ -38,39 +38,39 @@
 namespace gem5
 {
 
-class HelloObject : public SimObject
-{
-  private:
-    /**
-     * Example function to execute on an event trigger
-     */
-    void processEvent();
+  class HelloObject: public SimObject
+  {
+    private:
+      /**
+      * Example function to execute on an event trigger
+      */
+      void processEvent();
 
-    /// An event that wraps the above function
-    EventFunctionWrapper event;
+      /// An event that wraps the above function
+      EventFunctionWrapper event;
 
-    /// Pointer to the corresponding GoodbyeObject. Set via Python
-    GoodbyeObject* goodbye;
+      /// Pointer to the corresponding GoodbyeObject. Set via Python
+      GoodbyeObject* goodbye;
 
-    /// The name of this object in the Python config file
-    const std::string myName;
+      /// The name of this object in the Python config file
+      const std::string myName;
 
-    /// Latency between calling the event (in ticks)
-    const Tick latency;
+      /// Latency between calling the event (in ticks)
+      const Tick latency;
 
-    /// Number of times left to fire the event before goodbye
-    int timesLeft;
+      /// Number of times left to fire the event before goodbye
+      int timesLeft;
 
-  public:
-    HelloObject(const HelloObjectParams &p);
+    public:
+      HelloObject(const HelloObjectParams &p);
 
-    /**
-     * Part of a SimObject's initilaization. Startup is called after all
-     * SimObjects have been constructed. It is called after the user calls
-     * simulate() for the first time.
-     */
-    void startup() override;
-};
+      /**
+      * Part of a SimObject's initilaization. Startup is called after all
+      * SimObjects have been constructed. It is called after the user calls
+      * simulate() for the first time.
+      */
+      void startup() override;
+  };
 
 } // namespace gem5
 
