@@ -35,11 +35,11 @@
 namespace gem5
 {
 
-class SimpleObject : public SimObject
-{
-  public:
-    SimpleObject(const SimpleObjectParams &p);
-};
+  class SimpleObject : public SimObject
+  {
+    public:
+      SimpleObject(const SimpleObjectParams &p);
+  };
 
 } // namespace gem5
 
