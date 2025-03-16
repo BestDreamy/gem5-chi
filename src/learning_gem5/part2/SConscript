@@ -38,6 +38,7 @@ Source('goodbye_object.cc')
 Source('simple_memobj.cc')
 Source('simple_cache.cc')
 
-DebugFlag('HelloExample', "For Learning gem5 Part 2. Simple example debug flag")
+DebugFlag('Simple', "For Learning gem5 Part 2. Simple example debug flag")
+DebugFlag('HelloExample', "For Learning gem5 Part 2. Hello example debug flag")
 DebugFlag('SimpleMemobj', "For Learning gem5 Part 2.")
 DebugFlag('SimpleCache', "For Learning gem5 Part 2.")

@@ -27,16 +27,26 @@
  */
 
 #include "learning_gem5/part2/simple_object.hh"
-
-#include <iostream>
+#include "debug/Simple.hh"
 
 namespace gem5
 {
 
-    SimpleObject::SimpleObject(const SimpleObjectParams &params) :
-        SimObject(params)
+    SimpleObject::SimpleObject(const SimpleObjectParams &params):
+        SimObject(params), event([this] { this->processEvent(); }, name())
     {
-        std::cout << "Hello World! From a SimObject!" << std::endl;
+        DPRINTF(Simple, "Created the simple object.\n");
+    }
+
+    void SimpleObject::processEvent()
+    {
+        DPRINTF(Simple, "Processed the event!\n");
+    }
+
+    void SimpleObject::startup()
+    {
+        DPRINTF(Simple, "Schedule event.\n");
+        schedule(event, 10);
     }
 
 } // namespace gem5

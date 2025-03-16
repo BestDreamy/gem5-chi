@@ -35,10 +35,15 @@
 namespace gem5
 {
 
-  class SimpleObject : public SimObject
+  class SimpleObject: public SimObject
   {
+    private:
+      void processEvent();
+      EventFunctionWrapper event;
+
     public:
       SimpleObject(const SimpleObjectParams &p);
+      void startup();
   };
 
 } // namespace gem5
